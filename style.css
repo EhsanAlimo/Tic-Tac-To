@@ -11,7 +11,7 @@ body {
   box-sizing: border-box;
 }
 h1 {
-  font-size: 54px;
+  /* font-size: 54px; */
   text-transform: uppercase;
 }
 .container {
@@ -38,6 +38,7 @@ h1 {
   color: var(--purple);
   background-color: lightblue;
   font-size: 150px;
+  border: 1px solid black;
 }
 button {
   padding: 10px 20px;
