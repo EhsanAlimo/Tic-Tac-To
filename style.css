@@ -53,3 +53,12 @@ button:hover {
   cursor: pointer;
   transform: translateY(-2px);
 }
+@media (max-width: 500px) {
+  #gameboard {
+    width: 100vw;
+  }
+  .box {
+    width: 33.33vw;
+    height: 33.33vw;
+  }
+}
