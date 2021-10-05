@@ -11,93 +11,111 @@ $(document).ready(function () {
   let currentPlayer = "X";
   let spaces = [null, null, null, null, null, null, null, null, null];
   box0.on("click", function () {
-    box0.html(currentPlayer);
-    spaces[0] = currentPlayer;
-    playerHasWon();
-    if (currentPlayer === "X") {
-      currentPlayer = "O";
-    } else {
-      currentPlayer = "X";
+    if (spaces[0] === null) {
+      box0.html(currentPlayer);
+      spaces[0] = currentPlayer;
+      playerHasWon();
+      if (currentPlayer === "X") {
+        currentPlayer = "O";
+      } else {
+        currentPlayer = "X";
+      }
     }
   });
   box1.on("click", function () {
-    box1.html(currentPlayer);
-    spaces[1] = currentPlayer;
-    playerHasWon();
-    if (currentPlayer === "X") {
-      currentPlayer = "O";
-    } else {
-      currentPlayer = "X";
+    if (spaces[1] === null) {
+      box1.html(currentPlayer);
+      spaces[1] = currentPlayer;
+      playerHasWon();
+      if (currentPlayer === "X") {
+        currentPlayer = "O";
+      } else {
+        currentPlayer = "X";
+      }
     }
   });
   box2.on("click", function () {
-    box2.html(currentPlayer);
-    spaces[2] = currentPlayer;
-    playerHasWon();
-    if (currentPlayer === "X") {
-      currentPlayer = "O";
-    } else {
-      currentPlayer = "X";
+    if (spaces[2] === null) {
+      box2.html(currentPlayer);
+      spaces[2] = currentPlayer;
+      playerHasWon();
+      if (currentPlayer === "X") {
+        currentPlayer = "O";
+      } else {
+        currentPlayer = "X";
+      }
     }
   });
   box3.on("click", function () {
-    box3.html(currentPlayer);
-    spaces[3] = currentPlayer;
-    playerHasWon();
-    if (currentPlayer === "X") {
-      currentPlayer = "O";
-    } else {
-      currentPlayer = "X";
+    if (spaces[3] === null) {
+      box3.html(currentPlayer);
+      spaces[3] = currentPlayer;
+      playerHasWon();
+      if (currentPlayer === "X") {
+        currentPlayer = "O";
+      } else {
+        currentPlayer = "X";
+      }
     }
   });
   box4.on("click", function () {
-    box4.html(currentPlayer);
-    spaces[4] = currentPlayer;
-    playerHasWon();
-    if (currentPlayer === "X") {
-      currentPlayer = "O";
-    } else {
-      currentPlayer = "X";
+    if (spaces[4] === null) {
+      box4.html(currentPlayer);
+      spaces[4] = currentPlayer;
+      playerHasWon();
+      if (currentPlayer === "X") {
+        currentPlayer = "O";
+      } else {
+        currentPlayer = "X";
+      }
     }
   });
   box5.on("click", function () {
-    box5.html(currentPlayer);
-    spaces[5] = currentPlayer;
-    playerHasWon();
-    if (currentPlayer === "X") {
-      currentPlayer = "O";
-    } else {
-      currentPlayer = "X";
+    if (spaces[5] === null) {
+      box5.html(currentPlayer);
+      spaces[5] = currentPlayer;
+      playerHasWon();
+      if (currentPlayer === "X") {
+        currentPlayer = "O";
+      } else {
+        currentPlayer = "X";
+      }
     }
   });
   box6.on("click", function () {
-    box6.html(currentPlayer);
-    spaces[6] = currentPlayer;
-    playerHasWon();
-    if (currentPlayer === "X") {
-      currentPlayer = "O";
-    } else {
-      currentPlayer = "X";
+    if (spaces[6] === null) {
+      box6.html(currentPlayer);
+      spaces[6] = currentPlayer;
+      playerHasWon();
+      if (currentPlayer === "X") {
+        currentPlayer = "O";
+      } else {
+        currentPlayer = "X";
+      }
     }
   });
   box7.on("click", function () {
-    box7.html(currentPlayer);
-    spaces[7] = currentPlayer;
-    playerHasWon();
-    if (currentPlayer === "X") {
-      currentPlayer = "O";
-    } else {
-      currentPlayer = "X";
+    if (spaces[7] === null) {
+      box7.html(currentPlayer);
+      spaces[7] = currentPlayer;
+      playerHasWon();
+      if (currentPlayer === "X") {
+        currentPlayer = "O";
+      } else {
+        currentPlayer = "X";
+      }
     }
   });
   box8.on("click", function () {
-    box8.html(currentPlayer);
-    spaces[8] = currentPlayer;
-    playerHasWon();
-    if (currentPlayer === "X") {
-      currentPlayer = "O";
-    } else {
-      currentPlayer = "X";
+    if (spaces[8] === null) {
+      box8.html(currentPlayer);
+      spaces[8] = currentPlayer;
+      playerHasWon();
+      if (currentPlayer === "X") {
+        currentPlayer = "O";
+      } else {
+        currentPlayer = "X";
+      }
     }
   });
   const playerHasWon = () => {
