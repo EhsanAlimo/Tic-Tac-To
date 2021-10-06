@@ -1,22 +1,26 @@
 $(document).ready(function () {
-  let winCondition = false;
-  let currentPlayer = "X";
-  const playerOne = prompt("Player One Name ?");
-  const playerTwo = prompt("Player Two Name ?");
+  let winCondition = false; //for detecting the right win condition
+  let currentPlayer = "X"; // defualt start character
+  const playerOne = prompt("Player One Name ?"); //for players naming
+  const playerTwo = prompt("Player Two Name ?"); //for players naming
   // const playerOne = "Ehsan";
   // const playerTwo = "ET";
-  let winnerName = "";
-  let winCount = [];
+  let winnerName = ""; // passin the name of winner as string
+  let winCount = []; // number of hand won for each player--players name will go here as a winner
   let spaces = [null, null, null, null, null, null, null, null, null];
-  $("#playerOne").html(playerOne);
-  $("#playerTwo").html(playerTwo);
-  $("#playerOne").css("color", "yellow");
+  let reuseThisCombination; // to use for removing the yello color for winning line after pressing the restart
+  $("#playerOne").html(playerOne); /// inserting the name of the winner
+  $("#playerTwo").html(playerTwo); /// inserting the name of the winner
+  $("#playerOne").css("color", "yellow"); // converting the who's turn is that become yellow
   //////////click handler//////////using (e.target.id) to select id of each box clicked/////////
   $(".box").on("click", function (e) {
+    $("#gameboard").removeClass("animate__animated animate__backInDown"); ///removing the animation of game board after restart button
     if (spaces[e.target.id] === null && winCondition === false) {
-      $(`#${e.target.id}`).html(currentPlayer);
-      spaces[e.target.id] = currentPlayer;
-      playerHasWon();
+      //selecting the clicked box
+      $(`#${e.target.id}`).html(currentPlayer); //inserting the X or O
+      $(`#${e.target.id}`).addClass("animate__animated animate__flipInY"); //inserting the filiping effect for clicked box
+      spaces[e.target.id] = currentPlayer; //to insert  the X or O in the spaces array
+      playerHasWon(); /// calling the game winning condition
       if (winCondition === true) {
         return;
       }
@@ -32,6 +36,7 @@ $(document).ready(function () {
     }
   });
   const playerHasWon = () => {
+    /////game conditions
     const winCombination = [
       [0, 1, 2],
       [0, 3, 6],
@@ -43,6 +48,7 @@ $(document).ready(function () {
       [2, 4, 6],
     ];
     winCombination.forEach((thisCombination) => {
+      //checking all 8 winning conditions
       if (
         spaces[thisCombination[0]] !== null &&
         spaces[thisCombination[1]] !== null &&
@@ -53,17 +59,17 @@ $(document).ready(function () {
           spaces[thisCombination[1]] === spaces[thisCombination[2]]
         ) {
           winCondition = true;
+          changingLineColor(thisCombination);
           if (currentPlayer === "X") {
             winnerName = playerOne;
           } else {
             winnerName = playerTwo;
           }
-          winCount.push(winnerName);
+          winCount.push(winnerName); //passing the winner name to the winnerName variable and print it on the html (text)
           $("#playText").html(`${winnerName} won.`);
           $("#playText").css("color", "yellow");
           winnerCounter();
-          $("#playerTwo").css("color", "#3e0249");
-          $("#playerOne").css("color", "#3e0249");
+          reuseThisCombination = thisCombination;
           return true;
         }
       }
@@ -89,9 +95,17 @@ $(document).ready(function () {
     spaces = [null, null, null, null, null, null, null, null, null];
     winCondition = false;
     $(".box").html("");
+    $("#gameboard").addClass("animate__animated animate__backInDown");
+    removeAnimation();
+    removeWinColor(reuseThisCombination);
     $("#playText").html("Let's Play Again!");
     $("#playText").css("color", "#3e0249");
   });
+  const removeAnimation = () => {
+    for (i = 0; i < 9; i++) {
+      $(`#${i}`).removeClass("animate__animated animate__flipInY");
+    }
+  };
   const winnerCounter = () => {
     let playerOneWins = 0;
     let playerTwoWins = 0;
@@ -104,5 +118,15 @@ $(document).ready(function () {
     }
     $("#playerOneResult").html(playerOneWins);
     $("#playerTwoResult").html(playerTwoWins);
+  };
+  const changingLineColor = (combination) => {
+    combination.forEach((index) => {
+      $(`#${index}`).css("color", "yellow");
+    });
+  };
+  const removeWinColor = (combination) => {
+    combination.forEach((index) => {
+      $(`#${index}`).css("color", "#3e0249");
+    });
   };
 });
