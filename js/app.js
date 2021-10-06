@@ -1,20 +1,12 @@
 $(document).ready(function () {
-  const box0 = $("#0");
-  const box1 = $("#1");
-  const box2 = $("#2");
-  const box3 = $("#3");
-  const box4 = $("#4");
-  const box5 = $("#5");
-  const box6 = $("#6");
-  const box7 = $("#7");
-  const box8 = $("#8");
   let winCondition = false;
   let currentPlayer = "X";
   let spaces = [null, null, null, null, null, null, null, null, null];
-  box0.on("click", function () {
-    if (spaces[0] === null && winCondition === false) {
-      box0.html(currentPlayer);
-      spaces[0] = currentPlayer;
+  //////////click handler//////////using (e.target.id) to select id of each box clicked/////////
+  $(".box").on("click", function (e) {
+    if (spaces[e.target.id] === null && winCondition === false) {
+      $(`#${e.target.id}`).html(currentPlayer);
+      spaces[e.target.id] = currentPlayer;
       playerHasWon();
       if (currentPlayer === "X") {
         currentPlayer = "O";
@@ -23,103 +15,6 @@ $(document).ready(function () {
       }
     }
   });
-  box1.on("click", function () {
-    if (spaces[1] === null && winCondition === false) {
-      box1.html(currentPlayer);
-      spaces[1] = currentPlayer;
-      playerHasWon();
-      if (currentPlayer === "X") {
-        currentPlayer = "O";
-      } else {
-        currentPlayer = "X";
-      }
-    }
-  });
-  box2.on("click", function () {
-    if (spaces[2] === null && winCondition === false) {
-      box2.html(currentPlayer);
-      spaces[2] = currentPlayer;
-      playerHasWon();
-      if (currentPlayer === "X") {
-        currentPlayer = "O";
-      } else {
-        currentPlayer = "X";
-      }
-    }
-  });
-  box3.on("click", function () {
-    if (spaces[3] === null && winCondition === false) {
-      box3.html(currentPlayer);
-      spaces[3] = currentPlayer;
-      playerHasWon();
-      if (currentPlayer === "X") {
-        currentPlayer = "O";
-      } else {
-        currentPlayer = "X";
-      }
-    }
-  });
-  box4.on("click", function () {
-    if (spaces[4] === null && winCondition === false) {
-      box4.html(currentPlayer);
-      spaces[4] = currentPlayer;
-      playerHasWon();
-      if (currentPlayer === "X") {
-        currentPlayer = "O";
-      } else {
-        currentPlayer = "X";
-      }
-    }
-  });
-  box5.on("click", function () {
-    if (spaces[5] === null && winCondition === false) {
-      box5.html(currentPlayer);
-      spaces[5] = currentPlayer;
-      playerHasWon();
-      if (currentPlayer === "X") {
-        currentPlayer = "O";
-      } else {
-        currentPlayer = "X";
-      }
-    }
-  });
-  box6.on("click", function () {
-    if (spaces[6] === null && winCondition === false) {
-      box6.html(currentPlayer);
-      spaces[6] = currentPlayer;
-      playerHasWon();
-      if (currentPlayer === "X") {
-        currentPlayer = "O";
-      } else {
-        currentPlayer = "X";
-      }
-    }
-  });
-  box7.on("click", function () {
-    if (spaces[7] === null && winCondition === false) {
-      box7.html(currentPlayer);
-      spaces[7] = currentPlayer;
-      playerHasWon();
-      if (currentPlayer === "X") {
-        currentPlayer = "O";
-      } else {
-        currentPlayer = "X";
-      }
-    }
-  });
-  box8.on("click", function () {
-    if (spaces[8] === null && winCondition === false) {
-      box8.html(currentPlayer);
-      spaces[8] = currentPlayer;
-      playerHasWon();
-      if (currentPlayer === "X") {
-        currentPlayer = "O";
-      } else {
-        currentPlayer = "X";
-      }
-    }
-  });
-  ////////////Game Condition/////////////
   const playerHasWon = () => {
     const winCombination = [
       [0, 1, 2],
@@ -167,5 +62,8 @@ $(document).ready(function () {
     winCondition = false;
     $(".box").html("");
     $("#playText").html("Let's Play Again!");
+  });
+  $(".box").on("click", function (e) {
+    console.log(e.target.id);
   });
 });
