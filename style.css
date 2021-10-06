@@ -66,6 +66,15 @@ button:hover {
   cursor: pointer;
   transform: translateY(-2px);
 }
+.names {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 20px;
+  width: 100%;
+}
+
 @media (max-width: 500px) {
   #gameboard {
     width: 100vw;
@@ -74,4 +83,29 @@ button:hover {
     width: 33.33vw;
     height: 33.33vw;
   }
+}
+p {
+  margin: 0 60px;
+  font-weight: bold;
+  font-size: 2em;
+}
+#playerOne {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
+  white-space: nowrap;
+}
+#playerTwo {
+  display: flex;
+  justify-content: flex-start;
+  flex: 1;
+  white-space: nowrap;
+}
+.result {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 35%;
+  font-weight: bold;
+  font-size: 1.5em;
 }

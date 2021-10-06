@@ -1,17 +1,33 @@
 $(document).ready(function () {
   let winCondition = false;
   let currentPlayer = "X";
+  const playerOne = prompt("Player One Name ?");
+  const playerTwo = prompt("Player Two Name ?");
+  // const playerOne = "Ehsan";
+  // const playerTwo = "ET";
+  let winnerName = "";
+  let winCount = [];
   let spaces = [null, null, null, null, null, null, null, null, null];
+  $("#playerOne").html(playerOne);
+  $("#playerTwo").html(playerTwo);
+  $("#playerOne").css("color", "yellow");
   //////////click handler//////////using (e.target.id) to select id of each box clicked/////////
   $(".box").on("click", function (e) {
     if (spaces[e.target.id] === null && winCondition === false) {
       $(`#${e.target.id}`).html(currentPlayer);
       spaces[e.target.id] = currentPlayer;
       playerHasWon();
+      if (winCondition === true) {
+        return;
+      }
       if (currentPlayer === "X") {
+        $("#playerOne").css("color", "#3e0249");
+        $("#playerTwo").css("color", "yellow");
         currentPlayer = "O";
       } else {
         currentPlayer = "X";
+        $("#playerOne").css("color", "yellow");
+        $("#playerTwo").css("color", "#3e0249");
       }
     }
   });
@@ -37,7 +53,17 @@ $(document).ready(function () {
           spaces[thisCombination[1]] === spaces[thisCombination[2]]
         ) {
           winCondition = true;
-          $("#playText").html(`${currentPlayer} won.`);
+          if (currentPlayer === "X") {
+            winnerName = playerOne;
+          } else {
+            winnerName = playerTwo;
+          }
+          winCount.push(winnerName);
+          $("#playText").html(`${winnerName} won.`);
+          $("#playText").css("color", "yellow");
+          winnerCounter();
+          $("#playerTwo").css("color", "#3e0249");
+          $("#playerOne").css("color", "#3e0249");
           return true;
         }
       }
@@ -54,6 +80,8 @@ $(document).ready(function () {
     }
     if (tie === true) {
       $("#playText").html(`It is a tie`);
+      $("#playerTwo").css("color", "#3e0249");
+      $("#playerOne").css("color", "#3e0249");
     }
   };
   //////////restart button///////////
@@ -62,8 +90,19 @@ $(document).ready(function () {
     winCondition = false;
     $(".box").html("");
     $("#playText").html("Let's Play Again!");
+    $("#playText").css("color", "#3e0249");
   });
-  $(".box").on("click", function (e) {
-    console.log(e.target.id);
-  });
+  const winnerCounter = () => {
+    let playerOneWins = 0;
+    let playerTwoWins = 0;
+    for (i = 0; i < winCount.length; i++) {
+      if (winCount[i] === playerOne) {
+        playerOneWins += 1;
+      } else {
+        playerTwoWins += 1;
+      }
+    }
+    $("#playerOneResult").html(playerOneWins);
+    $("#playerTwoResult").html(playerTwoWins);
+  };
 });

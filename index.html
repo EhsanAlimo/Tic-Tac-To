@@ -7,12 +7,20 @@
     <title>Tic Tac Toe</title>
     <link rel="stylesheet" href="style.css" />
     <script src="js/jquery.js"></script>
-    <script src="js/app.js"></script>
   </head>
   <body>
     <div class="container">
+      <div class="names">
+        <div id="playerOne">Alimo</div>
+        <div><p>VS</p></div>
+        <div id="playerTwo">ET</div>
+      </div>
       <h1 id="playText">Let's Play!</h1>
       <button id="restartBtn">Restart</button>
+      <div class="result">
+        <div id="playerOneResult">0</div>
+        <div id="playerTwoResult">0</div>
+      </div>
       <div id="gameboard">
         <div class="box" id="0"></div>
         <div class="box" id="1"></div>
@@ -25,5 +33,6 @@
         <div class="box" id="8"></div>
       </div>
     </div>
+    <script src="js/app.js"></script>
   </body>
 </html>
