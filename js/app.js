@@ -8,10 +8,11 @@ $(document).ready(function () {
   const box6 = $("#6");
   const box7 = $("#7");
   const box8 = $("#8");
+  let winCondition = false;
   let currentPlayer = "X";
   let spaces = [null, null, null, null, null, null, null, null, null];
   box0.on("click", function () {
-    if (spaces[0] === null) {
+    if (spaces[0] === null && winCondition === false) {
       box0.html(currentPlayer);
       spaces[0] = currentPlayer;
       playerHasWon();
@@ -23,7 +24,7 @@ $(document).ready(function () {
     }
   });
   box1.on("click", function () {
-    if (spaces[1] === null) {
+    if (spaces[1] === null && winCondition === false) {
       box1.html(currentPlayer);
       spaces[1] = currentPlayer;
       playerHasWon();
@@ -35,7 +36,7 @@ $(document).ready(function () {
     }
   });
   box2.on("click", function () {
-    if (spaces[2] === null) {
+    if (spaces[2] === null && winCondition === false) {
       box2.html(currentPlayer);
       spaces[2] = currentPlayer;
       playerHasWon();
@@ -47,7 +48,7 @@ $(document).ready(function () {
     }
   });
   box3.on("click", function () {
-    if (spaces[3] === null) {
+    if (spaces[3] === null && winCondition === false) {
       box3.html(currentPlayer);
       spaces[3] = currentPlayer;
       playerHasWon();
@@ -59,7 +60,7 @@ $(document).ready(function () {
     }
   });
   box4.on("click", function () {
-    if (spaces[4] === null) {
+    if (spaces[4] === null && winCondition === false) {
       box4.html(currentPlayer);
       spaces[4] = currentPlayer;
       playerHasWon();
@@ -71,7 +72,7 @@ $(document).ready(function () {
     }
   });
   box5.on("click", function () {
-    if (spaces[5] === null) {
+    if (spaces[5] === null && winCondition === false) {
       box5.html(currentPlayer);
       spaces[5] = currentPlayer;
       playerHasWon();
@@ -83,7 +84,7 @@ $(document).ready(function () {
     }
   });
   box6.on("click", function () {
-    if (spaces[6] === null) {
+    if (spaces[6] === null && winCondition === false) {
       box6.html(currentPlayer);
       spaces[6] = currentPlayer;
       playerHasWon();
@@ -95,7 +96,7 @@ $(document).ready(function () {
     }
   });
   box7.on("click", function () {
-    if (spaces[7] === null) {
+    if (spaces[7] === null && winCondition === false) {
       box7.html(currentPlayer);
       spaces[7] = currentPlayer;
       playerHasWon();
@@ -107,7 +108,7 @@ $(document).ready(function () {
     }
   });
   box8.on("click", function () {
-    if (spaces[8] === null) {
+    if (spaces[8] === null && winCondition === false) {
       box8.html(currentPlayer);
       spaces[8] = currentPlayer;
       playerHasWon();
@@ -118,6 +119,7 @@ $(document).ready(function () {
       }
     }
   });
+  ////////////Game Condition/////////////
   const playerHasWon = () => {
     const winCombination = [
       [0, 1, 2],
@@ -139,12 +141,17 @@ $(document).ready(function () {
           spaces[thisCombination[0]] === spaces[thisCombination[1]] &&
           spaces[thisCombination[1]] === spaces[thisCombination[2]]
         ) {
+          winCondition = true;
           $("#playText").html(`${currentPlayer} won.`);
           return true;
         }
       }
     });
+    /////////tie condition////////////
     let tie = true;
+    if (winCondition === true) {
+      return;
+    }
     for (i = 0; i < spaces.length; i++) {
       if (spaces[i] === null) {
         tie = false;
@@ -154,8 +161,10 @@ $(document).ready(function () {
       $("#playText").html(`It is a tie`);
     }
   };
+  //////////restart button///////////
   $("#restartBtn").on("click", function () {
     spaces = [null, null, null, null, null, null, null, null, null];
+    winCondition = false;
     $(".box").html("");
     $("#playText").html("Let's Play Again!");
   });
