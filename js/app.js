@@ -8,7 +8,7 @@ $(document).ready(function () {
   let winnerName = ""; // passin the name of winner as string
   let winCount = []; // number of hand won for each player--players name will go here as a winner
   let spaces = [null, null, null, null, null, null, null, null, null];
-  let reuseThisCombination; // to use for removing the yello color for winning line after pressing the restart
+  let reuseThisCombination = []; // to use for removing the yello color for winning line after pressing the restart
   $("#playerOne").html(playerOne); /// inserting the name of the winner
   $("#playerTwo").html(playerTwo); /// inserting the name of the winner
   $("#playerOne").css("color", "yellow"); // converting the who's turn is that become yellow
@@ -69,7 +69,7 @@ $(document).ready(function () {
           $("#playText").html(`${winnerName} won.`);
           $("#playText").css("color", "yellow");
           winnerCounter();
-          reuseThisCombination = thisCombination;
+          reuseThisCombination.push(thisCombination);
           return true;
         }
       }
@@ -97,7 +97,9 @@ $(document).ready(function () {
     $(".box").html("");
     $("#gameboard").addClass("animate__animated animate__backInDown");
     removeAnimation();
-    removeWinColor(reuseThisCombination);
+    reuseThisCombination.forEach(function (myCombination) {
+      removeWinColor(myCombination);
+    });
     $("#playText").html("Let's Play Again!");
     $("#playText").css("color", "#3e0249");
   });
