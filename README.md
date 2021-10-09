@@ -5,3 +5,11 @@
 I have used some simple `html` to define seperate boxes and `Jquery` has been used as a `Javascript` library to implement the changes reponsive to the events that happen in the game while you playing it.
 
 To access the gameboard please use this [link](https://ehsanalimo.github.io/Tic-Tac-Toe/).
+
+## Features
+
+- Classic Tic Tac Toe functionality.
+- Custom Names
+- Recording the scores of each game
+- Restart button.
+- Showing the winner line with yellow color.
