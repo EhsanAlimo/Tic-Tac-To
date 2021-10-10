@@ -13,3 +13,8 @@ To access the gameboard please use this [link](https://ehsanalimo.github.io/Tic-
 - Recording the scores of each game
 - Restart button.
 - Showing the winner line with yellow color.
+
+## Future
+
+- Adding a computer simulation for to play with computer as a single player.
+- Changing some CSS to design it in more fancy way.
